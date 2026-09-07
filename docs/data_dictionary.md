@@ -71,6 +71,6 @@
 ## Data Quality Notes
 
 - No null/missing values in any column
-- `Date` stored as string — convert to datetime for time-series analysis
-- `Currency` is mixed (USD, EUR, INR) — values are NOT normalized to a single currency
-- `Profit` = `Total_Revenue` - `Expense` (verify: floating point rounding may cause minor differences)
+- `Date` stored as string — converted to datetime during cleaning for time-series analysis
+- **Currency Normalization:** Raw currency is mixed (USD, EUR, INR) and values have been normalized in-place to **INR (₹)** during data cleaning (conversion rates used: `1 USD = 83 INR`, `1 EUR = 90 INR`, `1 INR = 1 INR`) to ensure accurate financial reporting and prevent direct summation errors.
+- `Profit` = `Total_Revenue` - `Expense` (verified in data cleaning pipeline)
